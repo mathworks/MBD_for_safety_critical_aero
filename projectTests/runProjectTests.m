@@ -1,0 +1,3 @@
+clc
+commandwindow;
+runtests("DOWorkshopTests");

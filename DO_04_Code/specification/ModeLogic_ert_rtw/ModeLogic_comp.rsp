@@ -1,0 +1,8 @@
+-IC:/MATLAB/work/R2024b/Demos/quadMBD/source/demos/software/codeGen/DO_04_Code/specification
+-IC:/MATLAB/work/R2024b/Demos/quadMBD/source/demos/software/codeGen/DO_04_Code/specification/ModeLogic_ert_rtw
+-IC:/MATLAB/R2024b/extern/include
+-IC:/MATLAB/R2024b/simulink/include
+-IC:/MATLAB/R2024b/rtw/c/src
+-IC:/MATLAB/R2024b/rtw/c/src/ext_mode/common
+-IC:/MATLAB/R2024b/rtw/c/ert
+-IC:/MATLAB/work/R2024b/Demos/quadMBD/source/demos/software/codeGen/DO_04_Code/specification/slprj/ert/_sharedutils

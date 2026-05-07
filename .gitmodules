@@ -1,0 +1,10 @@
+[submodule "tools"]
+	path = tools
+	url = https://insidelabs-git.mathworks.com/AE-Content/collections/QuadcopterMBDSeries/demos/software/tools.git
+	branch = master
+	update = merge
+[submodule "DO_03_Design/common"]
+	path = DO_03_Design/common
+	url = https://insidelabs-git.mathworks.com/AE-Content/collections/QuadcopterMBDSeries/demos/software/common.git
+	branch = master
+	update = merge
