@@ -1,6 +1,6 @@
 # Model-Based Design for Safety-Critical Aerospace Systems Workshop
 
-[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks/MBD_for_safety_critical_aero​&project=AeroVnV.prj)
+[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks/MBD_for_safety_critical_aero&project=AeroVnV.prj)
 
 ## Overview and Motivation
 
@@ -36,7 +36,7 @@ This workshop takes approximately 2 hours to complete.
 
 **OR**
 
-[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks/MBD_for_safety_critical_aero​&project=AeroVnV.prj)
+[![Open in MATLAB Online](https://www.mathworks.com/images/responsive/global/open-in-matlab-online.svg)](https://matlab.mathworks.com/open/github/v1?repo=mathworks/MBD_for_safety_critical_aero&project=AeroVnV.prj)
 
 ## Products Used
 
