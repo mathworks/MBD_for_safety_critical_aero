@@ -2584,6 +2584,21 @@
                     "type":"String",
                     "value":"(^.{32,}$)|([^a-zA-Z_0-9])|(^\\d)|(^ )|(__)|(^_)|(_$)",
                     "visible":false
+                },
+                {
+                    "entries":[                    ],
+                    "index":15,
+                    "isenable":true,
+                    "name":"Ignore default block names",
+                    "span":{
+                        "colspan1":1,
+                        "colspan2":1,
+                        "rowspan1":8,
+                        "rowspan2":8
+                    },
+                    "type":"Bool",
+                    "value":false,
+                    "visible":true
                 }
             ],
             "InputParametersCallback":true,
