@@ -62,6 +62,20 @@ classdef DOWorkshopTests < matlab.unittest.TestCase
     methods (TestClassSetup)
     end
 
+    methods (TestMethodSetup)
+        function setupTempFolder(testCase)
+            %setupTempFolder Redirect working directory and Simulink cache
+            %   to a temporary folder so tests do not modify project files.
+            testCase.applyFixture( ...
+                matlab.unittest.fixtures.WorkingFolderFixture);
+
+            originalCache = Simulink.fileGenControl('get', 'CacheFolder');
+            Simulink.fileGenControl('set', 'CacheFolder', pwd);
+            testCase.addTeardown(@() ...
+                Simulink.fileGenControl('set', 'CacheFolder', originalCache));
+        end
+    end
+
     methods (TestMethodTeardown)
         function closeModels(testCase) %#ok<MANU>
             %closeModels Close all open models after each test
@@ -190,7 +204,7 @@ classdef DOWorkshopTests < matlab.unittest.TestCase
             % Run Model Advisor with the qualifiable checks configuration
             configFile = 'modelAdvisorQualifiableChecks.json';
 
-            % Execute Model Advisor
+            % Execute Model Advisor (reports go to temp working folder via fixture)
             results = ModelAdvisor.run('ModeLogic', 'Configuration', configFile);
 
             testCase.verifyNotEmpty(results, ...

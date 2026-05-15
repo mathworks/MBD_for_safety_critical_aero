@@ -23,7 +23,7 @@ In this workshop, you will learn how to:
 
 ## Prerequisites
 
-- MATLAB R2025b or newer with all [products listed below](#products-used) installed
+- MATLAB R2026a or newer with all [products listed below](#products-used) installed
 - Familiarity with Simulink (no prior DO-178C experience required)
 
 ## Getting Started
