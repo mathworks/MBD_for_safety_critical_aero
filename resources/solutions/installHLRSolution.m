@@ -28,30 +28,58 @@ if ~isfolder(projectRoot)
         "Cannot find the workshop project root: %s", projectRoot);
 end
 
-unzip(archivePath, projectRoot);
-
 modelPath = fullfile(projectRoot, "DO_03_Design", "ModeLogic", ...
     "specification", "ModeLogic.slx");
 modelName = "ModeLogic";
+harnessName = "HLR_03";
 harnessPath = fullfile(projectRoot, "DO_03_Design", "ModeLogic", ...
-    "test_cases", "HLR", "HLR_03.slx");
+    "test_cases", "HLR", harnessName + ".slx");
 testFilePath = fullfile(projectRoot, "DO_03_Design", "ModeLogic", ...
     "test_cases", "HLR", "ModeLogic_HLR_Tests.mldatx");
+
+if bdIsLoaded(modelName) && strcmp(get_param(modelName, "Dirty"), "on")
+    error("AeroVnV:UnsavedModelChanges", ...
+        "Save or discard changes to %s before installing the HLR solution.", ...
+        modelName);
+end
+
+closeLoadedTestFile(testFilePath);
+unzip(archivePath, projectRoot);
 
 if ~isfile(modelPath) || ~isfile(harnessPath) || ~isfile(testFilePath)
     error("AeroVnV:IncompleteHLRSolution", ...
         "The HLR solution archive did not install all expected files.");
 end
 
-open_system(modelPath);
+load_system(modelPath);
+harnesses = sltest.harness.find(modelName);
+harnessExists = any(strcmp({harnesses.name}, harnessName));
 
-if isempty(sltest.harness.find(modelName, "Name", "HLR_03"))
+if ~harnessExists
     sltest.harness.import(modelName, ...
         "ImportFileName", harnessPath, ...
         "ComponentName", "ModeLogic", ...
-        "Name", "HLR_03");
+        "Name", harnessName);
+    save_system(modelName);
 end
 
 fprintf("Installed HLR solution files in: %s\n", projectRoot);
-open(testFilePath);
+sltest.testmanager.load(testFilePath);
+sltest.testmanager.view;
+end
+
+function closeLoadedTestFile(testFilePath)
+% Close this file before replacing it, without discarding unsaved changes.
+
+testFiles = sltest.testmanager.getTestFiles;
+matchingFiles = strcmpi(string({testFiles.FilePath}), testFilePath);
+
+for testFile = testFiles(matchingFiles)
+    if testFile.Dirty
+        error("AeroVnV:UnsavedTestFileChanges", ...
+            "Save or discard changes to %s before installing the HLR solution.", ...
+            testFilePath);
+    end
+    close(testFile);
+end
 end
